@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
+import HomePage from "./components/HomePage/HomePage";
+import PicOfTheDay from "./components/PicOfTheDay/PicOfTheDay";
+import Particles from "react-particles-js";
+import ParticlesConfig from "./components/ParticlesConfig";
+import "./App.scss";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Particles className="particles" params={ParticlesConfig} />
+      <BrowserRouter>
+        <Header />
+        <div>
+          <Route component={HomePage} exact path="/" />
+          <Route component={PicOfTheDay} path="/apod" />
+        </div>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
+
+// Button Animation from https://codepen.io/trinketmage/pen/LWNMqd?editors=1100
+// https://www.youtube.com/watch?v=uYZuZwExFcY
+// https://www.npmjs.com/package/react-loader-spinner
